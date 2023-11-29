@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SpawnStar : MonoBehaviour
 {
-    [SerializeField]GameObject starObject;
+    
     [SerializeField] float delay;
     
     private void Start()
     {
+        
         EventManager.instance.OnSpawnStar += () => StartCoroutine(SpawnDelay(delay));
+        StartCoroutine(SpawnDelay(delay));
     }
     private void OnDestroy()
     {
@@ -23,7 +25,12 @@ public class SpawnStar : MonoBehaviour
     IEnumerator SpawnDelay(float spawnDelay)
     {
         yield return new WaitForSeconds(spawnDelay);
-        Instantiate(starObject,transform);
+        int random = Random.Range(0, GameManager.instance.starObjects.Count);
+        Star newStar = GameManager.instance.starObjects[random].GetComponent<Star>();
+        GameManager.instance.spawnedObject.Add(newStar.gameObject);
+        GameManager.instance.starObjects.Remove(newStar.gameObject);
+        newStar.Spawned();
+
     }
 
     
