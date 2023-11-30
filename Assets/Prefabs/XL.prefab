@@ -135,7 +135,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
 --- !u!50 &1583503681760887037
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
-  value: 0
-  onPit: 1
+  value: 10
+  onPit: 0
   starImage: {fileID: 169018630319724236}
   ballID: 0
   SpawnLocation: {fileID: 0}
@@ -194,3 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f377fe5599ee72043a4a0b00cdf974f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mergeDelay: 0.25

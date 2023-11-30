@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class SpawnStar : MonoBehaviour
@@ -25,12 +26,11 @@ public class SpawnStar : MonoBehaviour
     IEnumerator SpawnDelay(float spawnDelay)
     {
         yield return new WaitForSeconds(spawnDelay);
-        int random = Random.Range(0, GameManager.instance.starObjects.Count);
-        Star newStar = GameManager.instance.starObjects[random].GetComponent<Star>();
-        GameManager.instance.spawnedObject.Add(newStar.gameObject);
-        GameManager.instance.starObjects.Remove(newStar.gameObject);
-        newStar.Spawned();
-
+        int random = Random.Range(0, GameManager.instance.starPrefabs.Count);
+        Star newStar= Instantiate(GameManager.instance.starPrefabs[random],transform.position,Quaternion.identity).GetComponent<Star>();
+        newStar.onPit = true;
+        newStar.GetComponent<Rigidbody2D>().gravityScale = 0;
+        
     }
 
     

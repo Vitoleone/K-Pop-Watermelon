@@ -6,8 +6,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
    public static GameManager instance;
-    [SerializeField] public List<GameObject> starObjects;
-    [SerializeField] public List<GameObject> spawnedObject;
+   public List<GameObject> starPrefabs;
+    public List<Vector3> mergeTransforms;
+    public List<int> mergeTypes;
 
     private void Awake()
     {
@@ -21,14 +22,29 @@ public class GameManager : MonoBehaviour
         }
     }
     public int score;
-    public int ballID = 0;
+    private void Start()
+    {
+        StartCoroutine(SpawnMergedStars());
+    }
 
     public void AddScore(int amount)
     {
         score += amount;
     }
-    public int GetCurrentBallId()
+
+    IEnumerator SpawnMergedStars()
     {
-        return ballID++; 
+        while(true)
+        {
+            if(mergeTypes.Count >= 1 && mergeTransforms.Count >= 1)
+            {
+                Instantiate(starPrefabs[mergeTypes[0]], mergeTransforms[0],Quaternion.identity);
+                mergeTypes.RemoveAt(0);
+                mergeTransforms.RemoveAt(0);
+            }
+            yield return new WaitForSeconds(0.2f);
+
+        }
     }
+   
 }

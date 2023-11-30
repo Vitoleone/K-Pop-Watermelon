@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class MergeCheck : MonoBehaviour
 {
+    [SerializeField] float mergeDelay;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.TryGetComponent(out Star star))
         {
-            if(star.type == GetComponent<Star>().type)
+            StartCoroutine(DelayedMerge(star, mergeDelay));
+        }
+    }
+    IEnumerator DelayedMerge(Star star,float mergeDelay)
+    {
+        yield return new WaitForSeconds(mergeDelay);
+        if (star.type == GetComponent<Star>().type && star.transform.position.y > GetComponent<Star>().transform.position.y)
+        {
+            
+            if (GetComponent<Star>().type != Star.StarType.XXL)
             {
-                star.Merge();
+                if(!GameManager.instance.mergeTransforms.Contains(transform.position))
+                {
+                    Debug.Log(transform.position);
+                    GameManager.instance.mergeTransforms.Add(transform.position);
+                    GameManager.instance.mergeTypes.Add((int)star.type);
+                }
             }
+            Destroy(star.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -46,9 +46,7 @@ public class Movement : MonoBehaviour
         mySprite = gameObject.GetComponent<SpriteRenderer>();
         if (mousePos.x + Camera.main.ScreenToWorldPoint(new Vector2(mySprite.sprite.rect.width * gameObject.transform.localScale.x, 0)).x * 0.3f <= Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x && mousePos.x - Camera.main.ScreenToWorldPoint(new Vector2(mySprite.sprite.rect.width * gameObject.transform.localScale.x, 0)).x * 0.3f >= -Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x)
         {
-            Debug.Log(Camera.main.ScreenToWorldPoint(new Vector2(mySprite.sprite.rect.width, 0)).x * 0.35f);
-            return mousePos;
-            
+            return mousePos;          
         }
         
         return gameObject.transform.position;
