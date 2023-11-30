@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
    public List<GameObject> starPrefabs;
     public List<Vector3> mergeTransforms;
     public List<int> mergeTypes;
+    public GameObject mergeEffect;
 
     private void Awake()
     {
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
         {
             if(mergeTypes.Count >= 1 && mergeTransforms.Count >= 1)
             {
-                Instantiate(starPrefabs[mergeTypes[0]], mergeTransforms[0],Quaternion.identity);
+                GameObject mergedStar = Instantiate(starPrefabs[mergeTypes[0]], mergeTransforms[0],Quaternion.identity);
+                Instantiate(mergeEffect, mergedStar.transform);
                 mergeTypes.RemoveAt(0);
                 mergeTransforms.RemoveAt(0);
             }

@@ -180,6 +180,7 @@ MonoBehaviour:
   onPit: 0
   SpawnLocation: {fileID: 0}
   myRb: {fileID: 1583503681760887037}
+  blastEffect: {fileID: 3977403180482116358, guid: 837d320b323e989448e9c5aaaadf2f2b, type: 3}
   isMerging: 0
 --- !u!114 &-1538670102006073855
 MonoBehaviour:

@@ -632,6 +632,7 @@ MonoBehaviour:
   - {fileID: 7577346190803902515, guid: e0bf518b5b00d3b4aa03a8eeba8a271e, type: 3}
   mergeTransforms: []
   mergeTypes: 
+  mergeEffect: {fileID: 3977403180482116358, guid: 837d320b323e989448e9c5aaaadf2f2b, type: 3}
   score: 0
 --- !u!1 &318473381
 GameObject:
