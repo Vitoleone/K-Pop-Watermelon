@@ -20,13 +20,9 @@ public class Star : MonoBehaviour
     [SerializeField] public StarType type;
     [SerializeField] public int value;
     [SerializeField] public bool onPit;
-    [SerializeField] public SpriteRenderer starImage;
-    [SerializeField] int ballID;
     [SerializeField] Transform SpawnLocation;
     [SerializeField] Rigidbody2D myRb;
-
-
-
+    public bool isMerging = false;
     private void Start()
     {
         myRb = GetComponent<Rigidbody2D>();

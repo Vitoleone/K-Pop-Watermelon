@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MergeCheck : MonoBehaviour
 {
     [SerializeField] float mergeDelay;
+    Star starComponent;
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -13,13 +15,19 @@ public class MergeCheck : MonoBehaviour
             StartCoroutine(DelayedMerge(star, mergeDelay));
         }
     }
+    private void Start()
+    {
+        starComponent = GetComponent<Star>();
+    }
     IEnumerator DelayedMerge(Star star,float mergeDelay)
     {
         yield return new WaitForSeconds(mergeDelay);
-        if (star.type == GetComponent<Star>().type && star.transform.position.y > GetComponent<Star>().transform.position.y)
+        if (star.type == starComponent.type && star.transform.position.y > starComponent.transform.position.y && !starComponent.isMerging)
         {
+            star.isMerging = true;
+            starComponent.isMerging = true;
             
-            if (GetComponent<Star>().type != Star.StarType.XXL)
+            if (starComponent.type != Star.StarType.XXL)
             {
                 if(!GameManager.instance.mergeTransforms.Contains(transform.position))
                 {
