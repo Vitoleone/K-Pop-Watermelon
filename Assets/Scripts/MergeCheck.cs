@@ -22,7 +22,7 @@ public class MergeCheck : MonoBehaviour
     IEnumerator DelayedMerge(Star star,float mergeDelay)
     {
         yield return new WaitForSeconds(mergeDelay);
-        if (star.type == starComponent.type && star.transform.position.y > starComponent.transform.position.y && starComponent.isMerging == false)
+        if (star != null && star.type == starComponent.type && star.transform.position.y > starComponent.transform.position.y && starComponent.isMerging == false)
         {
             star.isMerging = true;
             starComponent.isMerging = true;
@@ -31,7 +31,6 @@ public class MergeCheck : MonoBehaviour
             {
                 if(!GameManager.instance.mergeTransforms.Contains(transform.position))
                 {
-                    Debug.Log(transform.position);
                     GameManager.instance.mergeTransforms.Add(transform.position);
                     GameManager.instance.mergeTypes.Add((int)star.type);
                 }

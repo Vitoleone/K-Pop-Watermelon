@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public Action<Star, Rigidbody2D> OnStarReleased;
     public Action OnSpawnStar;
     public Action OnScoreChanged;
+    public Action OnGameOver;
     public static EventManager instance;
     private void Awake()
     {

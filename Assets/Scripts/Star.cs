@@ -25,6 +25,7 @@ public class Star : MonoBehaviour
     [SerializeField] public StarType type;
     [SerializeField] public int value;
     [SerializeField] public bool onPit;
+    [SerializeField] public bool canFinishGame = false;
     [SerializeField] Transform SpawnLocation;
     [SerializeField] Rigidbody2D myRb;
     public bool isMerging = false;

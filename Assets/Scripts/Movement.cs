@@ -35,7 +35,10 @@ public class Movement : MonoBehaviour
             else if (Input.GetMouseButtonUp(0))
             {
                 EventManager.instance.OnStarReleased?.Invoke(star, myRigidbody);
-                EventManager.instance.OnSpawnStar?.Invoke();
+                if(!GameManager.instance.isGameOver)
+                {
+                    EventManager.instance.OnSpawnStar?.Invoke();
+                }   
             }
         }
         
@@ -55,6 +58,7 @@ public class Movement : MonoBehaviour
     {
         myrb.gravityScale = 1;
         star.onPit = false;
+
     }
 
 
