@@ -26,7 +26,7 @@ public class SpawnStar : MonoBehaviour
     IEnumerator SpawnDelay(float spawnDelay)
     {
         yield return new WaitForSeconds(spawnDelay);
-        int random = Random.Range(0, GameManager.instance.starPrefabs.Count);
+        int random = Random.Range(0, (int)(GameManager.instance.starPrefabs.Count/2));
         Star newStar= Instantiate(GameManager.instance.starPrefabs[random],transform.position,Quaternion.identity).GetComponent<Star>();
         newStar.onPit = true;
         newStar.GetComponent<Rigidbody2D>().gravityScale = 0;

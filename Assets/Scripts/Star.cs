@@ -15,7 +15,12 @@ public class Star : MonoBehaviour
         M = 3,
         L = 4,
         XL = 5,
-        XXL = 6
+        XXL = 6,
+        F = 7,
+        XF = 8,
+        XXF = 9,
+        H = 10,
+
     }
     [SerializeField] public StarType type;
     [SerializeField] public int value;

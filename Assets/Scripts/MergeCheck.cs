@@ -22,12 +22,12 @@ public class MergeCheck : MonoBehaviour
     IEnumerator DelayedMerge(Star star,float mergeDelay)
     {
         yield return new WaitForSeconds(mergeDelay);
-        if (star.type == starComponent.type && star.transform.position.y > starComponent.transform.position.y && !starComponent.isMerging)
+        if (star.type == starComponent.type && star.transform.position.y > starComponent.transform.position.y && starComponent.isMerging == false)
         {
             star.isMerging = true;
             starComponent.isMerging = true;
             
-            if (starComponent.type != Star.StarType.XXL)
+            if (starComponent.type != Star.StarType.H)
             {
                 if(!GameManager.instance.mergeTransforms.Contains(transform.position))
                 {

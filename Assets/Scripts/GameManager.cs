@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnMergedStars());
+        EventManager.instance.OnScoreChanged?.Invoke();
     }
 
     public void AddScore(int amount)
     {
         score += amount;
+        EventManager.instance.OnScoreChanged?.Invoke();
     }
 
     IEnumerator SpawnMergedStars()
